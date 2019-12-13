@@ -93,3 +93,4 @@ index.html
 .history
 
 !/.gitignore
+package-lock.json
