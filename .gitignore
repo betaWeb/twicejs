@@ -88,9 +88,9 @@ lerna-debug.log
 Thumbs.db
 index.html
 
-/.cache/*
-/.idea/*
-/.history/*
 .cache
 .idea
 .history
+
+.*
+!/.gitignore
