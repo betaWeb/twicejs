@@ -87,3 +87,10 @@ lerna-debug.log
 .DS_Store
 Thumbs.db
 index.html
+
+/.cache/*
+/.idea/*
+/.history/*
+.cache
+.idea
+.history
