@@ -87,11 +87,148 @@ set.replace({ id: 2 }, { id: 7 })
 console.log(set.withCount)
 // >  [{"id":3,"_count":2},{"id":7,"_count":2}]
 ```
+<br>
+
+### Methods & events
+#### Methods
+- TwiceJS.append(`item: Array|Object[]|any`): *TwiceJS*
+    
+Appends an item or a list of items on current collection.
+```JS
+const dataset = new TwiceJS
+
+const item = {id: 4}
+dataset.append(item)
+// > [{id: 4}]
+
+// OR
+
+const items = [{id: 4}, {id: 4}, {id: 3}]
+dataset.append(items)
+// > [{id: 4}, {id: 4}, {id: 3}]
+```
+
+<br>
+
+- TwiceJS.replace(`oldItem: any`, `newItem: any`): *TwiceJS*
+    
+Replace an item on current collection.
+```JS
+const data = [{id: 4}, {id: 4}]
+const dataset = (new TwiceJS)
+    .append(data)
+
+const oldItem = {id: 4}
+const newItem = {id: 5}
+dataset.replace(oldItem, newItem)
+// > [{id: 5}, {id: 5}]
+```
+
+<br>
+
+- TwiceJS.remove(`item: Array|Object[]|any`): *TwiceJS*
+    
+Remove an item or a list of items on current collection.
+```JS
+const data = [{id: 4}, {id: 4}, {id: 5}]
+const dataset = (new TwiceJS)
+    .append(data)
+
+const item = {id: 4}
+dataset.remove(item)
+// > [{id: 5}]
+```
+
+<br>
+
+- TwiceJS.isEmpty(): *Boolean*
+    
+Returns true if the collection is empty, false otherwise.
+```JS
+const data = [{id: 4}, {id: 4}]
+const dataset = (new TwiceJS)
+    .append(data)
+
+const item = {id: 4}
+dataset.remove(item)
+
+dataset.isEmpty() // true
+```
+
+<br>
+
+- TwiceJS.clear(): *TwiceJS*
+    
+Clear the collection
+```JS
+const data = [{id: 4}, {id: 4}, {id: 5}]
+const dataset = (new TwiceJS)
+    .append(data)
+
+dataset.clear()
+
+dataset.isEmpty() // true
+```
+
+<br>
+
+- TwiceJS.has(`item: Array|Object[]|any`): *Boolean*
+    
+Returns true if the collection contains the searched entry, false otherwise.
+```JS
+const data = [{id: 4}, {id: 4}, {id: 5}]
+const dataset = (new TwiceJS)
+    .append(data)
+
+dataset.has({id: 4}) // true
+dataset.has({id: 7}) // false
+```
+
+<br>
+
+- TwiceJS.occurrence(`item: Array|Object[]|any`): *Number*
+    
+Get an entry occurrences count.
+```JS
+const data = [{id: 4}, {id: 4}, {id: 5}]
+const dataset = (new TwiceJS)
+    .append(data)
+
+dataset.occurrence({id: 4}) // 2
+dataset.occurrence({id: 7}) // 0
+```
+
+<br>
+
+- TwiceJS.encode(`item: Array|Object[]|any`): *String*
+    
+Encode an entry according the defined `key_encoder` option.
+```JS
+const dataset = new TwiceJS({
+    key_encoder: TwiceJS.ENCODERS.BASE_64
+})
+
+dataset.encode({id: 4}) // eyJpZCI6NH0=
+```
+
+<br>
+
+- TwiceJS.decode(`item: String`): *any*
+    
+Decode an entry according the defined `key_encoder` option.
+```JS
+const dataset = new TwiceJS({
+    key_encoder: TwiceJS.ENCODERS.BASE_64
+})
+
+const base64_str = dataset.encode({id: 4}) // eyJpZCI6NH0=
+dataset.decode(base64_str) // {id: 4}
+```
 
 <br><br>
 
 ### Todo
 
-- [ ] Add keyify option choice : JSON or base64
+- [x] Add keyify option choice : JSON or base64
 - [ ] Add a `.delete(<item>)` method which removes only one occurrency of an entry on the collection, and decrement his count.
 - [ ] Rewrite TwiceJS class with TypeScript.

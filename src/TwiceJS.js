@@ -9,7 +9,18 @@ export default class TwiceJS {
      */
     static get DEFAULT_OPTIONS() {
         return {
-            count_key: '_count'
+            count_key: '_count',
+            key_encoder: TwiceJS.ENCODERS.JSON
+        }
+    }
+
+    /**
+     * @returns {Object}
+     */
+    static get ENCODERS() {
+        return {
+            JSON: 'json',
+            BASE_64: 'base64'
         }
     }
 
@@ -18,6 +29,10 @@ export default class TwiceJS {
      */
     get entries() {
         return Array.from(this.keys.map(this._decodeKey.bind(this)))
+    }
+
+    get encodedEntries() {
+        return Array.from(this.keys)
     }
 
     /**
@@ -130,12 +145,46 @@ export default class TwiceJS {
     }
 
     /**
+     * Get if an item exists on dataset
+     * 
+     * @param {*} item 
+     * @returns Boolean
+     */
+    has(item) {
+        if (!Array.isArray(item) && item.constructor !== Object)
+            return this.keys.includes(item)
+        return this._dataset.has(item)
+    }
+
+    /**
+     * Get an item occurrences count
+     * 
      * @param {*} item 
      * @returns {Number}
      */
-    count(item) {
+    occurrence(item) {
         const key = this._keyify(item)
         return this._dataset.get(key) || 0
+    }
+
+    /**
+     * Encode an entry according the defined key_encoder option
+     * 
+     * @param {*} item 
+     * @returns {String}
+     */
+    encode(item) {
+        return this._keyify(item)
+    }
+
+    /**
+     * Decode an entry according the defined key_encoder option
+     * 
+     * @param {String} key
+     * @returns {*}
+     */
+    decode(key) {
+        return this._decodeKey(key)
     }
 
     /**
@@ -161,10 +210,14 @@ export default class TwiceJS {
             return item.toString()
 
         try {
-            return JSON.stringify(item)
+            item = JSON.stringify(item)
+
+            if (this.options.key_encoder === TwiceJS.ENCODERS.BASE_64)
+                item = btoa(item)
         } catch (e) {
             throw new Error(`[Err] TwiceJS._keyify :: error on keyify item ${item}\n${e}`)
         }
+        return item
     }
 
     /**
@@ -173,6 +226,9 @@ export default class TwiceJS {
      */
     _decodeKey(key) {
         try {
+            if (this.options.key_encoder === TwiceJS.ENCODERS.BASE_64)
+                key = atob(key)
+
             return JSON.parse(key)
         } catch (err) {
             return key;
