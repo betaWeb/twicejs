@@ -92,6 +92,6 @@ console.log(set.withCount)
 
 ### Todo
 
+- [ ] Add keyify option choice : JSON or base64
 - [ ] Add a `.delete(<item>)` method which removes only one occurrency of an entry on the collection, and decrement his count.
 - [ ] Rewrite TwiceJS class with TypeScript.
-- [ ] Add keyify option choice : JSON or base64
