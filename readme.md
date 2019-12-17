@@ -91,7 +91,10 @@ console.log(set.withCount)
 
 ### Methods & events
 #### Methods
-- TwiceJS.append(`item: Array|Object[]|any`): *TwiceJS*
+
+> &nbsp;<br>
+> TwiceJS.append(`item: Array|Object[]|any`): *TwiceJS*
+> <br>&nbsp;
     
 Appends an item or a list of items on current collection.
 ```JS
@@ -110,7 +113,9 @@ dataset.append(items)
 
 <br>
 
-- TwiceJS.replace(`oldItem: any`, `newItem: any`): *TwiceJS*
+> &nbsp;<br>
+> TwiceJS.replace(`oldItem: any`, `newItem: any`): *TwiceJS*
+> <br>&nbsp;
     
 Replace an item on current collection.
 ```JS
@@ -126,7 +131,9 @@ dataset.replace(oldItem, newItem)
 
 <br>
 
-- TwiceJS.remove(`item: Array|Object[]|any`): *TwiceJS*
+> &nbsp;<br>
+> TwiceJS.remove(`item: Array|Object[]|any`): *TwiceJS*
+> <br>&nbsp;
     
 Remove an item or a list of items on current collection.
 ```JS
@@ -141,7 +148,9 @@ dataset.remove(item)
 
 <br>
 
-- TwiceJS.isEmpty(): *Boolean*
+> &nbsp;<br>
+> TwiceJS.isEmpty(): *Boolean*
+> <br>&nbsp;
     
 Returns true if the collection is empty, false otherwise.
 ```JS
@@ -157,7 +166,9 @@ dataset.isEmpty() // true
 
 <br>
 
-- TwiceJS.clear(): *TwiceJS*
+> &nbsp;<br>
+> TwiceJS.clear(): *TwiceJS*
+> <br>&nbsp;
     
 Clear the collection
 ```JS
@@ -172,7 +183,9 @@ dataset.isEmpty() // true
 
 <br>
 
-- TwiceJS.has(`item: Array|Object[]|any`): *Boolean*
+> &nbsp;<br>
+> TwiceJS.has(`item: Array|Object[]|any`): *Boolean*
+> <br>&nbsp;
     
 Returns true if the collection contains the searched entry, false otherwise.
 ```JS
@@ -186,7 +199,9 @@ dataset.has({id: 7}) // false
 
 <br>
 
-- TwiceJS.occurrence(`item: Array|Object[]|any`): *Number*
+> &nbsp;<br>
+> TwiceJS.occurrence(`item: Array|Object[]|any`): *Number*
+> <br>&nbsp;
     
 Get an entry occurrences count.
 ```JS
@@ -200,7 +215,9 @@ dataset.occurrence({id: 7}) // 0
 
 <br>
 
-- TwiceJS.encode(`item: Array|Object[]|any`): *String*
+> &nbsp;<br>
+> TwiceJS.encode(`item: Array|Object[]|any`): *String*
+> <br>&nbsp;
     
 Encode an entry according the defined `key_encoder` option.
 ```JS
@@ -213,7 +230,9 @@ dataset.encode({id: 4}) // eyJpZCI6NH0=
 
 <br>
 
-- TwiceJS.decode(`item: String`): *any*
+> &nbsp;<br>
+> TwiceJS.decode(`item: String`): *any*
+> <br>&nbsp;
     
 Decode an entry according the defined `key_encoder` option.
 ```JS
@@ -229,6 +248,7 @@ dataset.decode(base64_str) // {id: 4}
 
 ### Todo
 
-- [x] Add keyify option choice : JSON or base64
-- [ ] Add a `.delete(<item>)` method which removes only one occurrency of an entry on the collection, and decrement his count.
+- [x] Add keyify option choice : JSON or base64.
+- [ ] Add `.increment(<item>)` (alias of `.append(<items>)`) and `.decrement(<item>)` (alias of `.delete(<item>)`) methods which adds or removes only one occurrency of an entry on the collection, and increment or decrement his count.
 - [ ] Rewrite TwiceJS class with TypeScript.
+- [ ] Add unit tests.
