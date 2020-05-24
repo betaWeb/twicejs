@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "parcel index.js",
     "watch": "parcel --watch index.js",
-    "build": "parcel build index.js -d dist/ --out-file TwiceJS.min.js"
+    "build": "parcel build index.js -d dist/ --out-file TwiceJS.min.js",
+    "doc": "jsdoc -p -R README.md -a all -c jsdoc.conf.json",
+    "test": "jest --watchAll --colors"
   },
   "repository": {
     "type": "git",
@@ -37,6 +39,18 @@
   },
   "homepage": "https://github.com/betaWeb/twicejs#readme",
   "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-transform-modules-commonjs": "^7.9.0",
+    "@babel/plugin-transform-runtime": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "@babel/runtime": "^7.9.2",
+    "@pixi/jsdoc-template": "^2.6.0",
+    "@types/jest": "^25.2.3",
+    "jest": "^25.2.7",
+    "jest-cli": "^25.2.7",
+    "jest-extended": "^0.11.5",
+    "jsdoc": "^3.6.3",
     "parcel-bundler": "^1.12.4"
   }
 }

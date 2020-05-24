@@ -5,7 +5,7 @@
 export default class TwiceJS {
 
     /**
-     * @returns {Object}
+     * @returns {Object.<String, String>}
      */
     static get DEFAULT_OPTIONS() {
         return {
@@ -15,7 +15,7 @@ export default class TwiceJS {
     }
 
     /**
-     * @returns {Object}
+     * @returns {Object.<String, String>}
      */
     static get ENCODERS() {
         return {
@@ -191,6 +191,8 @@ export default class TwiceJS {
      * @param {Array} data
      * @param {Function} process
      * @returns {TwiceJS}
+     *
+     * @private
      */
     _process(data, process) {
         if (!Array.isArray(data))
@@ -204,6 +206,8 @@ export default class TwiceJS {
     /**
      * @param {*} item 
      * @returns {String}
+     *
+     * @private
      */
     _keyify(item) {
         if (!Array.isArray(item) && item.constructor !== Object)
@@ -223,6 +227,8 @@ export default class TwiceJS {
     /**
      * @param {String} key
      * @returns {*}
+     *
+     * @private
      */
     _decodeKey(key) {
         try {
@@ -238,6 +244,8 @@ export default class TwiceJS {
     /**
      * @param {Array|Object|*} data
      * @returns {Array|Object|*}
+     *
+     * @private
      */
     _normalize(data) {
         try {
