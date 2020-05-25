@@ -1,6 +1,6 @@
 {
   "name": "@betaweb/twicejs",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Manage duplicates, count item occurences, dedupe an Array",
   "main": "index.js",
   "scripts": {

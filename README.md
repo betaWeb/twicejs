@@ -9,7 +9,7 @@ Manage duplicates, count item occurences, dedupe an Array, in an easy way.
 
 ### Installation
 To install TwiceJS, you just have to download `TwiceJS.min.js` in the `dist` folder and add a script into your HTML page :
-```HTML
+```html
 <script src="path/to/TwiceJS.min.js"></script>
 ```
 
@@ -26,7 +26,7 @@ $ yarn add @betaweb/twicejs
 ### Basic usage
 
 There are several ways uo use TwiceJS, as you can see in the examples below.<br>
-```JS
+```javascript
 const iterable = [{id: 1}, {id: 1}, {id: 2}, {id: 1}, {id: 3}, {id: 3}]
 
 /* .: Instanciate via TwiceJS class :. */
@@ -46,7 +46,7 @@ let set = arr.twiceJs
 
 The main TwiceJS purpuse is to dedupe a collection, and especially an objects collection. You can get the deduped collection with the `.entries` getter.
 
-```JS
+```javascript
 //  dedupe entries
 console.log(set.entries)
 // > [{"id":1},{"id":2},{"id":3}]
@@ -57,7 +57,7 @@ console.log(set.entries)
 
 You can also dedupe a collection, and get the count of occurrences for each entry with the `.withCount` getter.
 
-```JS
+```javascript
 // dedupe entries with occurences count
 console.log(set.withCount)
 // > [{"id":1,"_count":3},{"id":2,"_count":1},{"id":3,"_count":2}]
@@ -70,7 +70,7 @@ console.log(set.withCount)
 Now, let see how handle the created collection with TwiceJS.
 There are three methods availables with TwiceJS : `append`, `replace` and `remove`.
 
-```JS
+```javascript
 // Removes all occurrences of `{id: 1}` on the collection
 set.remove({id: 1})
 
@@ -97,7 +97,7 @@ console.log(set.withCount)
 > <br>&nbsp;
     
 Appends an item or a list of items on current collection.
-```JS
+```javascript
 const dataset = new TwiceJS
 
 const item = {id: 4}
@@ -118,7 +118,7 @@ dataset.append(items)
 > <br>&nbsp;
     
 Replace an item on current collection.
-```JS
+```javascript
 const data = [{id: 4}, {id: 4}]
 const dataset = (new TwiceJS)
     .append(data)
@@ -136,7 +136,7 @@ dataset.replace(oldItem, newItem)
 > <br>&nbsp;
     
 Remove an item or a list of items on current collection.
-```JS
+```javascript
 const data = [{id: 4}, {id: 4}, {id: 5}]
 const dataset = (new TwiceJS)
     .append(data)
@@ -153,7 +153,7 @@ dataset.remove(item)
 > <br>&nbsp;
     
 Returns true if the collection is empty, false otherwise.
-```JS
+```javascript
 const data = [{id: 4}, {id: 4}]
 const dataset = (new TwiceJS)
     .append(data)
@@ -171,7 +171,7 @@ dataset.isEmpty() // true
 > <br>&nbsp;
     
 Clear the collection
-```JS
+```javascript
 const data = [{id: 4}, {id: 4}, {id: 5}]
 const dataset = (new TwiceJS)
     .append(data)
@@ -188,7 +188,7 @@ dataset.isEmpty() // true
 > <br>&nbsp;
     
 Returns true if the collection contains the searched entry, false otherwise.
-```JS
+```javascript
 const data = [{id: 4}, {id: 4}, {id: 5}]
 const dataset = (new TwiceJS)
     .append(data)
@@ -204,7 +204,7 @@ dataset.has({id: 7}) // false
 > <br>&nbsp;
     
 Get an entry occurrences count.
-```JS
+```javascript
 const data = [{id: 4}, {id: 4}, {id: 5}]
 const dataset = (new TwiceJS)
     .append(data)
@@ -220,7 +220,7 @@ dataset.occurrence({id: 7}) // 0
 > <br>&nbsp;
     
 Encode an entry according the defined `key_encoder` option.
-```JS
+```javascript
 const dataset = new TwiceJS({
     key_encoder: TwiceJS.ENCODERS.BASE_64
 })
@@ -235,7 +235,7 @@ dataset.encode({id: 4}) // eyJpZCI6NH0=
 > <br>&nbsp;
     
 Decode an entry according the defined `key_encoder` option.
-```JS
+```javascript
 const dataset = new TwiceJS({
     key_encoder: TwiceJS.ENCODERS.BASE_64
 })
